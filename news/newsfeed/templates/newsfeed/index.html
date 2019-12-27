@@ -1,0 +1,12 @@
+<h1>Hello, World!</h1>
+
+{% if feed %}
+    {% for article in feed %}
+        {% for key, value in article.items %}
+            <li>{{ key }}: {{ value }}</li>
+        {% endfor %}
+        <hr>
+    {% endfor %}
+{% else %}
+    <p>No news feed today!</p>
+{% endif %}

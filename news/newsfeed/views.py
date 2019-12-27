@@ -1,6 +1,14 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+
+import requests
+
+# TODO Hide this somehow
+NEWS_KEY = '5fc766119a1e4ee8a20567bece674814'
 
 # Create your views here.
 def index(request): 
-    return HttpResponse("Hello")
+    url = ('https://newsapi.org/v2/top-headlines?country=us&apiKey=' + NEWS_KEY)
+    response = requests.get(url)
+    data = response.json()
+    context = { 'feed': data['articles'] }
+    return render(request, 'newsfeed/index.html', context)
