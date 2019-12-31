@@ -16,7 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
+from newsfeed import views as newsfeed_views
+
 urlpatterns = [
+    # TODO handle root landing and 404 errors
     path('newsfeed/', include('newsfeed.urls')),
     path('admin/', admin.site.urls)
 ]
