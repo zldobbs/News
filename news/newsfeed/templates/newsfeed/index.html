@@ -1,12 +1,41 @@
-<h1>Hello, World!</h1>
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>It's the News</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <!-- Custom CSS? -->
+    </head>
 
-{% if feed %}
-    {% for article in feed %}
-        {% for key, value in article.items %}
-            <li>{{ key }}: {{ value }}</li>
-        {% endfor %}
-        <hr>
-    {% endfor %}
-{% else %}
-    <p>No news feed today!</p>
-{% endif %}
+    <body>
+        <div class="container">
+            <h1 class="text-center">It's the News</h1>
+            <div class="row">
+                <!-- Display most recent articles  -->
+                {% if feed %}
+                    {% for article in feed %}
+                        <!-- TODO Fix alignment and center the aritcles -->
+                        <!-- TODO Add source and authors -->
+                        <div class="card" style="width: 20rem;">
+                            <img src="{{ article.imgUrl }}"  class="card-img-top" alt="{{ article.title }}" />
+                            <div class="card-body">
+                                <h5 class="card-title">{{ article.title }}</h5>
+                                <p class="card-text">{{ article.description }}</p>
+                                <p class="card-text">{{ article.date_published }}</p>
+                                <!-- TODO Make open in new tab! -->
+                                <a href="{{ article.url }}" class="card-link">Source</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p>No news feed today!</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>    
+    </body>
+</html>
