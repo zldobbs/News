@@ -5,6 +5,11 @@ body {
     color: white;
 }
 
+/* FIXME This doesn't remove ugly link decoration */
+#page-title {
+    text-decoration: none;
+}
+
 .article-space {
     color: black;
 }

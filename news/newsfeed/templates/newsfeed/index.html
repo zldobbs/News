@@ -13,7 +13,12 @@
 
     <body>
         <div class="container">
-            <h1 class="text-center">It's the News</h1>
+            <div class="row text-center">
+                <h1 id="page-title" class="col-sm-12"><a href="{% url 'index' %}">It's the News</a></h1>
+                {% if page %} 
+                    <h3 class="col-sm-12">{{ page.headline }}</h3>
+                {% endif %}
+            </div>
             <div class="row article-space">
                 <!-- Display most recent articles  -->
                 {% if feed %}
@@ -23,10 +28,11 @@
                             <img src="{{ article.imgUrl }}"  class="card-img-top" alt="{{ article.title }}" />
                             <div class="card-body">
                                 <!-- TODO Get some custom source images for popular sources.. Maybe remove .com? --> 
-                                <h6 class="card-title">{{ article.source }}</h6>
+                                <h6 class="card-title"><a href="{% url 'source' article.source_id %}">{{ article.source }}</a></h6>
                                 <h5 class="card-title">{{ article.title }}</h5>
-                                <p class="card-text">{{ article.date_published }} - {{ article.author }}</p>
+                                <p class="card-text">{{ article.date_published }} - <a href="{% url 'author' article.author_id %}">{{ article.author }}</a></p>
                                 <p class="card-text">{{ article.description }}</p>
+                                <!-- TODO Keep track of clicks on any given URL --> 
                                 <a href="{{ article.url }}" class="card-link btn btn-primary" target="blank">Source</a>
                             </div>
                         </div>

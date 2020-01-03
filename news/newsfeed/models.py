@@ -36,6 +36,9 @@ class Article(models.Model):
     url = models.URLField(max_length=300) 
     imgUrl = models.URLField(max_length=300, null=True)
     date_published = models.DateField()
+    leftVotes = models.IntegerField(default=0)
+    middleVotes = models.IntegerField(default=0)
+    rightVotes = models.IntegerField(default=0)
 
     def __str__(self):
         return self.title
