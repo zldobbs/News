@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 import newsfeed.utils.broker as broker 
 from .models import Source, Author, Article
 

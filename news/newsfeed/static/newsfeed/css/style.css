@@ -13,3 +13,7 @@ body {
 .article-space {
     color: black;
 }
+
+#page-footer {
+    margin-top: 20px; 
+}
