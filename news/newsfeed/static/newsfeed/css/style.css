@@ -1,0 +1,10 @@
+/* Primary custom styles for newsfeed app */
+
+body {
+    background-color: black;
+    color: white;
+}
+
+.article-space {
+    color: black;
+}

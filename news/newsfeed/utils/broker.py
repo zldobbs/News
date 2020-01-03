@@ -87,7 +87,6 @@ def check_broker():
     time_since_last_fetch = (datetime.now(pytz.utc) - broker.last_fetch_datetime).total_seconds() / 60.0
     print("Minutes since last update: " + str(time_since_last_fetch))
     # News API allows 500 requests/day on free trial. Fetch every 3 minutes
-    # FIXME change this to 3.0 when done testing
     if time_since_last_fetch > 3.0: 
         # Fetch new articles, update broker
         fetch_articles()

@@ -9,7 +9,7 @@ def index(request):
     broker.check_broker()
 
     # Get the 10 latest articles 
-    latest_articles = Article.objects.order_by('-date_published')[:10].values()
+    latest_articles = Article.objects.order_by('-date_published')[:30].values()
 
     # Populate relevant information for the articles
     for article in latest_articles:
