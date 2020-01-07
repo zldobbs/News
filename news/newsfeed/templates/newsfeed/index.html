@@ -25,7 +25,12 @@
                     {% for article in feed %}
                         <!-- TODO Add source and authors -->
                         <div class="card col-sm-4" style="width: 20rem;">
-                            <img src="{{ article.imgUrl }}"  class="card-img-top" alt="{{ article.title }}" />
+                            {% if article.imgUrl %}
+                                <img src="{{ article.imgUrl }}"  class="card-img-top" alt="{{ article.title }}" />
+                            {% else %}
+                                <!-- Default image if none is provided -->
+                                <img src="https://www.publicdomainpictures.net/pictures/300000/nahled/abstract-art-1554597127F52.jpg" class="card-img-top" alt="{{ article.title }}" />
+                            {% endif %}
                             <div class="card-body">
                                 <!-- TODO Get some custom source images for popular sources.. Maybe remove .com? --> 
                                 <h6 class="card-title"><a href="{% url 'source' article.source_id %}">{{ article.source }}</a></h6>
