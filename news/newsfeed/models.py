@@ -31,8 +31,8 @@ class Author(models.Model):
 class Article(models.Model):
     source = models.ForeignKey(Source, on_delete=models.CASCADE)
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
-    title = models.CharField(max_length=200)
-    description = models.CharField(max_length=400, default="...")
+    title = models.CharField(max_length=200, null=True, default="Article Title")
+    description = models.CharField(max_length=400, null=True, default="...")
     url = models.URLField(max_length=300) 
     imgUrl = models.URLField(max_length=300, null=True)
     date_published = models.DateField()

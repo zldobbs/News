@@ -1,58 +1,37 @@
-<!doctype html>
-<html lang="en">
-    {% load static %}
-    <head>
-        <title>It's the News</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <!-- Bootstrap --> 
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <!-- Custom newsfeed styles -->
-        <link rel="stylesheet" type="text/css" href="{% static 'newsfeed/css/style.css' %}">
-    </head>
+{% extends 'news/template.html' %}
 
-    <body>
-        <div class="container">
-            <div class="row text-center">
-                <h1 id="page-title" class="col-sm-12"><a href="{% url 'index' %}">It's the News</a></h1>
-                {% if page %} 
-                    <h3 class="col-sm-12">{{ page.headline }}</h3>
-                {% endif %}
-            </div>
-            <div class="row article-space">
-                <!-- Display most recent articles  -->
-                {% if feed %}
-                    {% for article in feed %}
-                        <!-- TODO Add source and authors -->
-                        <div class="card col-sm-4" style="width: 20rem;">
-                            {% if article.imgUrl %}
-                                <img src="{{ article.imgUrl }}"  class="card-img-top" alt="{{ article.title }}" />
-                            {% else %}
-                                <!-- Default image if none is provided -->
-                                <img src="https://www.publicdomainpictures.net/pictures/300000/nahled/abstract-art-1554597127F52.jpg" class="card-img-top" alt="{{ article.title }}" />
-                            {% endif %}
-                            <div class="card-body">
-                                <!-- TODO Get some custom source images for popular sources.. Maybe remove .com? --> 
-                                <h6 class="card-title"><a href="{% url 'source' article.source_id %}">{{ article.source }}</a></h6>
-                                <h5 class="card-title">{{ article.title }}</h5>
-                                <p class="card-text">{{ article.date_published }} - <a href="{% url 'author' article.author_id %}">{{ article.author }}</a></p>
-                                <p class="card-text">{{ article.description }}</p>
-                                <!-- TODO Keep track of clicks on any given URL --> 
-                                <a href="{{ article.url }}" class="card-link btn btn-primary" target="blank">Source</a>
-                            </div>
-                        </div>
-                    {% endfor %}
-                {% else %}
-                    <p>No news feed today!</p>
-                {% endif %}
-            </div>
-            <div id="page-footer" class="row text-right">
-                <h6 class="col-sm-12">Powered by <a href="https://newsapi.org" target="blank">News API</a></h6>
-            </div>
-        </div>
-        <!-- Bootstrap scripts --> 
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>    
-    </body>
-</html>
+{% block header %}
+    {% if page %} 
+        <h3 class="col-sm-12">{{ page.headline }}</h3>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <div class="row article-space">
+        <!-- Display most recent articles  -->
+        {% if feed %}
+            {% for article in feed %}
+                <!-- TODO Add source and authors -->
+                <div class="card col-sm-4" style="width: 20rem;">
+                    {% if article.imgUrl %}
+                        <img src="{{ article.imgUrl }}"  class="card-img-top" alt="{{ article.title }}" />
+                    {% else %}
+                        <!-- Default image if none is provided -->
+                        <img src="https://www.publicdomainpictures.net/pictures/300000/nahled/abstract-art-1554597127F52.jpg" class="card-img-top" alt="{{ article.title }}" />
+                    {% endif %}
+                    <div class="card-body">
+                        <!-- TODO Get some custom source images for popular sources.. Maybe remove .com? --> 
+                        <h6 class="card-title"><a href="{% url 'source' article.source_id %}">{{ article.source }}</a></h6>
+                        <h5 class="card-title">{{ article.title }}</h5>
+                        <p class="card-text">{{ article.date_published }} - <a href="{% url 'author' article.author_id %}">{{ article.author }}</a></p>
+                        <p class="card-text">{{ article.description }}</p>
+                        <!-- TODO Keep track of clicks on any given URL --> 
+                        <a href="{{ article.url }}" class="card-link btn btn-primary" target="blank">Source</a>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No news feed today!</p>
+        {% endif %}
+    </div>
+{% endblock %}

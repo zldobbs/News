@@ -25,7 +25,8 @@ SECRET_KEY = 'jv_n585rx+=t4&5!z%mg-_95ey3oy)+=tu)e)&qso=w^t*y_fa'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# TODO Fix this when deploying to production, need this for testing right now 
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -55,7 +56,10 @@ ROOT_URLCONF = 'news.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            # Root level templates path 
+            'news/templates'
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
