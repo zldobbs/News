@@ -1,17 +1,55 @@
 /* Primary custom styles for newsfeed app */
 
+/* 
+
+Imported Google Fonts: 
+font-family: 'Merriweather', serif;
+font-family: 'Playfair Display', serif;
+font-family: 'Noto Serif', serif;
+font-family: 'Libre Baskerville', serif; 
+
+*/
+
 body {
-    background-color: black;
-    color: white;
+    padding-top: 70px;
 }
 
-/* FIXME This doesn't remove ugly link decoration */
-#page-title {
+#site-title {
     text-decoration: none;
+    font-family: 'Playfair Display', serif;
+    font-size: 2vw;
+    font-weight: bolder;
+}
+
+#site-title a {
+    text-decoration: none;
+    color: black;
+}
+
+.page-title {
+    margin-top: 30px; 
+    font-family: 'Playfair Display', serif;
+    font-size: 3vw;
+    font-weight: bolder;
 }
 
 .article-space {
     color: black;
+}
+
+.article {
+    border: 0;
+    border-radius: 0;
+    margin-top: 10px;
+    margin-bottom: 10px; 
+    padding-top: 1%;
+    -webkit-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+}
+
+.article-img {
+    margin: 0 auto;
 }
 
 #page-footer {

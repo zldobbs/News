@@ -6,26 +6,48 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- Bootstrap --> 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <!-- Custom Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville|Merriweather|Noto+Serif|Playfair+Display&display=swap" rel="stylesheet">
         <!-- Custom newsfeed styles -->
         {% load static %}
         <link rel="stylesheet" type="text/css" href="{% static 'newsfeed/css/style.css' %}">
     </head>
 
     <body>
-        <div class="container">
-            <!-- Header -->
-            <div class="row text-center">
-                <h1 id="page-title" class="col-sm-12"><a href="{% url 'newsfeed-index' %}">It's the News</a></h1>
-                <h4 class="col-sm-12"><a href="{% url 'news-index' %}">Home</a></h3>
-                {% block header %}{% endblock %}
+        <!-- Header -->
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a id="site-title" class="navbar-brand" href="{% url 'newsfeed-index' %}">It's the News</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav mr-auto">
+                        <!-- TODO active links on current page -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'news-index' %}">Home<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'newsfeed-index' %}">Feed</a>
+                        </li>
+                    </ul>
+                    <span class="navbar-text">
+                        Powered by <a href="https://newsapi.org" target="blank">News API</a>
+                    </span>
+                </div>
             </div>
+        </nav>
+
+        <div class="container">
+            <!-- Header content block -->
+            {% block header %}{% endblock %}
 
             <!-- Main content block -->
             {% block content %}{% endblock %}
 
             <!-- Footer -->
             <div id="page-footer" class="row text-right">
-                <h6 class="col-sm-12">Powered by <a href="https://newsapi.org" target="blank">News API</a></h6>
+                <h6 class="col-sm-12"></h6>
             </div>
         </div>
         <!-- Bootstrap scripts --> 

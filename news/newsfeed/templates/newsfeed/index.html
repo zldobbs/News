@@ -2,22 +2,22 @@
 
 {% block header %}
     {% if page %} 
-        <h3 class="col-sm-12">{{ page.headline }}</h3>
+        <h2 class="page-title col-sm-12 text-center">{{ page.headline }}</h2>
     {% endif %}
 {% endblock %}
 
 {% block content %}
-    <div class="row article-space">
+    <div class="row justify-content-center article-space">
         <!-- Display most recent articles  -->
         {% if feed %}
             {% for article in feed %}
                 <!-- TODO Add source and authors -->
-                <div class="card col-sm-4" style="width: 20rem;">
+                <div class="card col-sm-8 col-md-6 article">
                     {% if article.imgUrl %}
-                        <img src="{{ article.imgUrl }}"  class="card-img-top" alt="{{ article.title }}" />
+                        <img src="{{ article.imgUrl }}" class="card-img-top article-img" alt="{{ article.title }}" />
                     {% else %}
                         <!-- Default image if none is provided -->
-                        <img src="https://www.publicdomainpictures.net/pictures/300000/nahled/abstract-art-1554597127F52.jpg" class="card-img-top" alt="{{ article.title }}" />
+                        <img src="https://www.publicdomainpictures.net/pictures/300000/nahled/abstract-art-1554597127F52.jpg" class="card-img-top article-img" alt="{{ article.title }}" />
                     {% endif %}
                     <div class="card-body">
                         <!-- TODO Get some custom source images for popular sources.. Maybe remove .com? --> 
@@ -29,6 +29,7 @@
                         <a href="{{ article.url }}" class="card-link btn btn-primary" target="blank">Source</a>
                     </div>
                 </div>
+                <div class="w-100 d-none d-md-block"></div>
             {% endfor %}
         {% else %}
             <p>No news feed today!</p>
